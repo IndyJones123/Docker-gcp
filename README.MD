@@ -4,21 +4,21 @@
 
 ## _Prerequisites_ :
 
-Docker installed on your system
-Google Cloud CLI (gcloud) installed and authenticated
-Access to a GCP project with Artifact Registry and Cloud Run enabled
+- Docker installed on your system
+- Google Cloud CLI (gcloud) installed and authenticated
+- Access to a GCP project with Artifact Registry and Cloud Run enabled
 
 ## 1. Create Dockerfile and requirements.txt
 
-Dockerfile: Define the container environment.
-requirements.txt: List all required Python dependencies.
+- Dockerfile: Define the container environment.
+
+- Requirements.txt: List all required Python dependencies.
 
 ## 2. Build Docker Image
 
 (IN WINDOWS)
 
 ```
-bash
 docker build -t test-mainmodule2 .
 ```
 
@@ -28,22 +28,19 @@ docker build -t test-mainmodule2 .
 docker buildx build -t test-mainmodule3 --platform linux/amd64 .
 ```
 
-## 3. Deploy Docker Images into artifact registry (GCP) dont forget to authenticated it using gcli
+## 3. Deploy Docker Images into artifact registry (GCP)
 
 ```
-bash
 gcloud auth configure-docker
 ```
 
 Format : gcp.io/<-gcp-id->/<-imagesName->
 
 ```
-bash
 docker tag busybox gcr.io/angelic-hold-445702-s1/test-mainmodule3
 ```
 
 ```
-bash
 docker push gcp.io/angelic-hold-445702-s1/test-mainmodule3
 ```
 
